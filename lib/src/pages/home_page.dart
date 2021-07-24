@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:physxlab/src/utils/custom_colors.dart';
 import 'package:physxlab/src/widgets/welcome.dart';
@@ -33,25 +34,34 @@ class _HomePageState extends State<HomePage> {
     );
 
     final h = MediaQuery.of(context).size.height;
+    final w = MediaQuery.of(context).size.width;
     final textTheme = Theme.of(context).primaryTextTheme;
 
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: customColors.buttonsColor,
-        ),
-        height: h * 0.2,
-        width: double.infinity,
-        child: SafeArea(
-          child: Container(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Welcome(),
-              ],
-            ),
-          ),
+        child: Column(
+          children: [
+            Welcome(),
+            Container(
+              padding: EdgeInsets.only(top: 10),
+              child: Table(
+                children: [
+                  TableRow(
+                    children: [
+                      _createButton(w, h, FontAwesomeIcons.satelliteDish),
+                      _createButton(w, h, FontAwesomeIcons.appleAlt),
+                    ],
+                  ),
+                  TableRow(
+                    children: [
+                      _createButton(w, h, FontAwesomeIcons.satelliteDish),
+                      _createButton(w, h, FontAwesomeIcons.appleAlt),
+                    ],
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
       bottomNavigationBar: DotNavigationBar(
@@ -75,6 +85,23 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.science),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _createButton(double w, double h, IconData icon) {
+    return Container(
+      padding: EdgeInsets.only(top: 5, bottom: 10, left: 10, right: 10),
+      child: ElevatedButton(
+        onPressed: () {},
+        child: Container(
+          height: h * 0.3,
+          child: Icon(
+            icon,
+            size: 60,
+            color: customColors.iconsColor,
+          ),
+        ),
       ),
     );
   }
