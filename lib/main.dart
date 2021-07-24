@@ -23,6 +23,13 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
           backgroundColor: customColors.buttonsColor,
         ),
+        primaryTextTheme: TextTheme(
+          headline6: TextStyle(
+            fontFamily: 'Mathematical',
+            fontSize: 60,
+            color: customColors.iconsColor,
+          ),
+        ),
       ),
     );
   }

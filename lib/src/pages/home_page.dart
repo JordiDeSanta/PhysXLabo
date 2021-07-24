@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage> {
     );
 
     final h = MediaQuery.of(context).size.height;
+    final textTheme = Theme.of(context).primaryTextTheme;
 
     return Scaffold(
       body: Container(
@@ -40,6 +41,20 @@ class _HomePageState extends State<HomePage> {
         ),
         height: h * 0.2,
         width: double.infinity,
+        child: SafeArea(
+          child: Container(
+            padding: EdgeInsets.all(30),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'HELLO',
+                  style: textTheme.headline6,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
       bottomNavigationBar: DotNavigationBar(
         backgroundColor: customColors.buttonsColor,
