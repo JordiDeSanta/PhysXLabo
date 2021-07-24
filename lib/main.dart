@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+
 import 'package:physxlab/src/pages/home_page.dart';
+import 'package:physxlab/src/utils/custom_colors.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  final customColors = CustomColors();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,8 +17,12 @@ class MyApp extends StatelessWidget {
       routes: {
         'home': (context) => HomePage(),
       },
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
+      themeMode: ThemeMode.dark,
+      darkTheme: ThemeData(
+        scaffoldBackgroundColor: customColors.backgroundColor,
+        appBarTheme: AppBarTheme(
+          backgroundColor: customColors.buttonsColor,
+        ),
       ),
     );
   }

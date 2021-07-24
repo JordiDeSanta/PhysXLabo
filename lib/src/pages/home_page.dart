@@ -1,6 +1,7 @@
-import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:dot_navigation_bar/dot_navigation_bar.dart';
+import 'package:physxlab/src/utils/custom_colors.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -10,44 +11,60 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var _selectedTab = _SelectedTab.home;
+  final customColors = CustomColors();
+
+  void _handleIndexChanged(int i) {
+    setState(() {
+      _selectedTab = _SelectedTab.values[i];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle.light.copyWith(
+      SystemUiOverlayStyle.dark.copyWith(
         statusBarColor: Colors.transparent,
-        systemNavigationBarColor: Colors.transparent,
-        systemNavigationBarDividerColor: Colors.transparent,
+        systemNavigationBarColor: customColors.backgroundColor,
+        systemNavigationBarDividerColor: customColors.backgroundColor,
       ),
     );
 
-    int selectedIndex = 0;
+    final h = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      bottomNavigationBar: FFNavigationBar(
-        theme: FFNavigationBarTheme(
-          barBackgroundColor: Colors.white,
-          selectedItemBorderColor: Colors.yellow,
-          selectedItemBackgroundColor: Colors.green,
-          selectedItemIconColor: Colors.white,
-          selectedItemLabelColor: Colors.black,
+      body: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: customColors.buttonsColor,
         ),
-        selectedIndex: selectedIndex,
-        onSelectTab: (index) {
-          setState(() {
-            selectedIndex = index;
-          });
-        },
+        height: h * 0.2,
+        width: double.infinity,
+      ),
+      bottomNavigationBar: DotNavigationBar(
+        backgroundColor: customColors.buttonsColor,
+        currentIndex: _SelectedTab.values.indexOf(_selectedTab),
+        onTap: _handleIndexChanged,
+        selectedItemColor: customColors.selectedColor,
+        dotIndicatorColor: customColors.selectedColor,
+        unselectedItemColor: customColors.iconsColor,
         items: [
-          FFNavigationBarItem(
-            iconData: Icons.calendar_today,
-            label: 'Schedule',
+          DotNavigationBarItem(
+            icon: Icon(Icons.home),
           ),
-          FFNavigationBarItem(
-            iconData: Icons.people,
-            label: 'Contacts',
+          DotNavigationBarItem(
+            icon: Icon(Icons.favorite_border),
+          ),
+          DotNavigationBarItem(
+            icon: Icon(Icons.search),
+          ),
+          DotNavigationBarItem(
+            icon: Icon(Icons.science),
           ),
         ],
       ),
     );
   }
 }
+
+enum _SelectedTab { home, favorite, search, person }
