@@ -43,13 +43,42 @@ class _HomePageState extends State<HomePage> {
         width: double.infinity,
         child: SafeArea(
           child: Container(
-            padding: EdgeInsets.all(30),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            padding: EdgeInsets.all(20),
+            child: Row(
               children: [
-                Text(
-                  'HELLO',
-                  style: textTheme.headline6,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Welcome!',
+                      style: textTheme.bodyText1!.copyWith(
+                        fontWeight: FontWeight.w200,
+                        color: customColors.iconsColor,
+                      ),
+                    ),
+                    Text(
+                      'Jordi Silva',
+                      style: textTheme.headline4!.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: customColors.iconsColor,
+                      ),
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: Container(),
+                ),
+                CircleAvatar(
+                  radius: 30,
+                  child: Container(
+                    clipBehavior: Clip.antiAlias,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Image(
+                      image: AssetImage('assets/img/jordidev.jpg'),
+                    ),
+                  ),
                 ),
               ],
             ),

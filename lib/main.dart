@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:physxlab/src/pages/home_page.dart';
 import 'package:physxlab/src/utils/custom_colors.dart';
@@ -23,13 +24,7 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
           backgroundColor: customColors.buttonsColor,
         ),
-        primaryTextTheme: TextTheme(
-          headline6: TextStyle(
-            fontFamily: 'Mathematical',
-            fontSize: 60,
-            color: customColors.iconsColor,
-          ),
-        ),
+        primaryTextTheme: GoogleFonts.openSansCondensedTextTheme(),
       ),
     );
   }
