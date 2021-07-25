@@ -23,14 +23,16 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final h = MediaQuery.of(context).size.height;
+    final colorScheme = Theme.of(context).colorScheme;
+
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle.dark.copyWith(
         statusBarColor: Colors.transparent,
+        systemNavigationBarColor: colorScheme.background,
+        systemNavigationBarDividerColor: Colors.transparent,
       ),
     );
-
-    final h = MediaQuery.of(context).size.height;
-    final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       body: Container(

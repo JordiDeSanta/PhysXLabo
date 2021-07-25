@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:physxlab/src/pages/axis_page.dart';
 
+import 'package:physxlab/src/pages/axis_page.dart';
+import 'package:physxlab/src/pages/experiment.dart';
+import 'package:physxlab/src/pages/experiments_page.dart';
 import 'package:physxlab/src/pages/home_page.dart';
 
 void main() => runApp(MyApp());
@@ -22,16 +24,22 @@ class MyApp extends StatelessWidget {
       routes: {
         'home': (context) => HomePage(),
         'axis': (context) => AxisPage(),
+        'experiments': (context) => ExperimentsPage(),
+        'experiment': (context) => Experiment(),
       },
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData(
         scaffoldBackgroundColor: colorScheme.background,
-        appBarTheme: AppBarTheme(),
+        appBarTheme: AppBarTheme(
+          color: colorScheme.primary,
+          centerTitle: true,
+          iconTheme: IconThemeData(color: colorScheme.secondary),
+        ),
         colorScheme: colorScheme,
         textTheme: GoogleFonts.openSansCondensedTextTheme().copyWith().apply(
-              bodyColor: Color.fromARGB(255, 94, 226, 240),
-              displayColor: Color.fromARGB(255, 94, 226, 240),
-              decorationColor: Color.fromARGB(255, 94, 226, 240),
+              bodyColor: colorScheme.secondary,
+              displayColor: colorScheme.secondary,
+              decorationColor: colorScheme.secondary,
             ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
