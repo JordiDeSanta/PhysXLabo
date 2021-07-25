@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'package:physxlab/src/utils/custom_colors.dart';
 import 'package:physxlab/src/widgets/welcome.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,7 +14,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var _selectedTab = _SelectedTab.home;
-  final customColors = CustomColors();
 
   void _handleIndexChanged(int i) {
     setState(() {
@@ -28,14 +26,13 @@ class _HomePageState extends State<HomePage> {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle.dark.copyWith(
         statusBarColor: Colors.transparent,
-        systemNavigationBarColor: customColors.backgroundColor,
-        systemNavigationBarDividerColor: customColors.backgroundColor,
       ),
     );
 
     final h = MediaQuery.of(context).size.height;
     final w = MediaQuery.of(context).size.width;
     final textTheme = Theme.of(context).primaryTextTheme;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       body: Container(
@@ -49,15 +46,17 @@ class _HomePageState extends State<HomePage> {
                   TableRow(
                     children: [
                       _createButton(
-                          w, h, FontAwesomeIcons.satelliteDish, 'Waves'),
+                          context, h, FontAwesomeIcons.satelliteDish, 'Waves'),
                       _createButton(
-                          w, h, FontAwesomeIcons.appleAlt, 'Mechanics'),
+                          context, h, FontAwesomeIcons.appleAlt, 'Mechanics'),
                     ],
                   ),
                   TableRow(
                     children: [
-                      _createButton(w, h, FontAwesomeIcons.burn, 'Energy'),
-                      _createButton(w, h, FontAwesomeIcons.plug, 'Electricity'),
+                      _createButton(
+                          context, h, FontAwesomeIcons.burn, 'Energy'),
+                      _createButton(
+                          context, h, FontAwesomeIcons.plug, 'Electricity'),
                     ],
                   ),
                 ],
@@ -67,12 +66,11 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       bottomNavigationBar: DotNavigationBar(
-        backgroundColor: customColors.buttonsColor,
+        backgroundColor: colorScheme.primary,
+        selectedItemColor: colorScheme.background,
+        dotIndicatorColor: colorScheme.secondary,
         currentIndex: _SelectedTab.values.indexOf(_selectedTab),
         onTap: _handleIndexChanged,
-        selectedItemColor: customColors.darkColor,
-        dotIndicatorColor: customColors.darkColor,
-        unselectedItemColor: customColors.iconsColor,
         items: [
           DotNavigationBarItem(
             icon: Icon(Icons.home),
@@ -91,7 +89,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _createButton(double w, double h, IconData icon, String name) {
+  Widget _createButton(
+      BuildContext context, double h, IconData icon, String name) {
     return Container(
       padding: EdgeInsets.only(top: 5, bottom: 10, left: 10, right: 10),
       child: ElevatedButton(
@@ -104,9 +103,13 @@ class _HomePageState extends State<HomePage> {
               Icon(
                 icon,
                 size: 60,
-                color: customColors.iconsColor,
+                color: Theme.of(context).colorScheme.secondary,
               ),
-              Text(name),
+              SizedBox(height: h * 0.02),
+              Text(
+                name,
+                style: Theme.of(context).textTheme.headline5,
+              ),
             ],
           ),
         ),

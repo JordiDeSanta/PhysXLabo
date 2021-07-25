@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:physxlab/src/utils/custom_colors.dart';
 
 class Welcome extends StatelessWidget {
-  final customColors = CustomColors();
-
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).primaryTextTheme;
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
     final h = MediaQuery.of(context).size.height;
 
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: customColors.buttonsColor,
+        color: colorScheme.primary,
       ),
       child: SafeArea(
         child: Container(
@@ -26,14 +24,12 @@ class Welcome extends StatelessWidget {
                     'Welcome!',
                     style: textTheme.bodyText1!.copyWith(
                       fontWeight: FontWeight.w200,
-                      color: customColors.iconsColor,
                     ),
                   ),
                   Text(
                     'Jordi Silva',
                     style: textTheme.headline4!.copyWith(
                       fontWeight: FontWeight.w600,
-                      color: customColors.iconsColor,
                     ),
                   ),
                 ],
