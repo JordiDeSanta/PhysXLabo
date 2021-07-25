@@ -9,11 +9,12 @@ class Experiment extends StatefulWidget {
 }
 
 class _ExperimentState extends State<Experiment> {
+  Offset th = Offset(20, 100);
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    double xPos = 20;
     final school = Icon(
       FontAwesomeIcons.school,
       size: 80,
@@ -26,26 +27,28 @@ class _ExperimentState extends State<Experiment> {
           style: textTheme.headline5!.copyWith(fontWeight: FontWeight.bold),
         ),
       ),
-      body: Stack(
-        children: [
-          Icon(
-            FontAwesomeIcons.biking,
-            size: 50,
-          ),
-          Transform.translate(
-            offset: Offset(xPos, 100),
-            child: Draggable<Icon>(
-              axis: Axis.horizontal,
-              feedback: school,
-              data: school,
-              child: school,
-              childWhenDragging: Container(),
-              onDragEnd: (details) {
-                details.offset;
-              },
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: Row(
+          children: [
+            Transform.translate(
+              offset: th,
+              child: Draggable(
+                axis: Axis.horizontal,
+                child: school,
+                feedback: school,
+                childWhenDragging: Container(),
+                onDragEnd: (dragDetails) {
+                  setState(() {
+                    th = Offset(dragDetails.offset.dx, th.dy);
+                    print(th);
+                  });
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
