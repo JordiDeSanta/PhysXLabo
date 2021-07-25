@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -9,15 +11,22 @@ class Experiment extends StatefulWidget {
 }
 
 class _ExperimentState extends State<Experiment> {
-  Offset th = Offset(20, 100);
+  Offset th = Offset(0, 0);
 
   @override
   Widget build(BuildContext context) {
+    final w = MediaQuery.of(context).size.width;
+
     final textTheme = Theme.of(context).textTheme;
 
     final school = Icon(
       FontAwesomeIcons.school,
       size: 80,
+    );
+
+    final biker = Icon(
+      FontAwesomeIcons.biking,
+      size: 50,
     );
 
     return Scaffold(
@@ -27,28 +36,16 @@ class _ExperimentState extends State<Experiment> {
           style: textTheme.headline5!.copyWith(fontWeight: FontWeight.bold),
         ),
       ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        child: Row(
-          children: [
-            Transform.translate(
-              offset: th,
-              child: Draggable(
-                axis: Axis.horizontal,
-                child: school,
-                feedback: school,
-                childWhenDragging: Container(),
-                onDragEnd: (dragDetails) {
-                  setState(() {
-                    th = Offset(dragDetails.offset.dx, th.dy);
-                    print(th);
-                  });
-                },
-              ),
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          SizedBox(height: 50),
+          Row(
+            children: [
+              biker,
+              Transform.translate(offset: th, child: school),
+            ],
+          ),
+        ],
       ),
     );
   }
