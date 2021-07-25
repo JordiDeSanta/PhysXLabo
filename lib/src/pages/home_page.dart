@@ -48,14 +48,16 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   TableRow(
                     children: [
-                      _createButton(w, h, FontAwesomeIcons.satelliteDish),
-                      _createButton(w, h, FontAwesomeIcons.appleAlt),
+                      _createButton(
+                          w, h, FontAwesomeIcons.satelliteDish, 'Waves'),
+                      _createButton(
+                          w, h, FontAwesomeIcons.appleAlt, 'Mechanics'),
                     ],
                   ),
                   TableRow(
                     children: [
-                      _createButton(w, h, FontAwesomeIcons.satelliteDish),
-                      _createButton(w, h, FontAwesomeIcons.appleAlt),
+                      _createButton(w, h, FontAwesomeIcons.burn, 'Energy'),
+                      _createButton(w, h, FontAwesomeIcons.plug, 'Electricity'),
                     ],
                   ),
                 ],
@@ -68,8 +70,8 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: customColors.buttonsColor,
         currentIndex: _SelectedTab.values.indexOf(_selectedTab),
         onTap: _handleIndexChanged,
-        selectedItemColor: customColors.selectedColor,
-        dotIndicatorColor: customColors.selectedColor,
+        selectedItemColor: customColors.darkColor,
+        dotIndicatorColor: customColors.darkColor,
         unselectedItemColor: customColors.iconsColor,
         items: [
           DotNavigationBarItem(
@@ -89,7 +91,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _createButton(double w, double h, IconData icon) {
+  Widget _createButton(double w, double h, IconData icon, String name) {
     return Container(
       padding: EdgeInsets.only(top: 5, bottom: 10, left: 10, right: 10),
       child: ElevatedButton(
