@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var _selectedTab = _SelectedTab.home;
+  var _selectedTab = _SelectedTab.laboratory;
 
   void _handleIndexChanged(int i) {
     setState(() {
@@ -30,8 +30,6 @@ class _HomePageState extends State<HomePage> {
     );
 
     final h = MediaQuery.of(context).size.height;
-    final w = MediaQuery.of(context).size.width;
-    final textTheme = Theme.of(context).primaryTextTheme;
     final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
@@ -73,16 +71,16 @@ class _HomePageState extends State<HomePage> {
         onTap: _handleIndexChanged,
         items: [
           DotNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.science_outlined),
           ),
           DotNavigationBarItem(
             icon: Icon(Icons.favorite_border),
           ),
           DotNavigationBarItem(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.mode_comment_outlined),
           ),
           DotNavigationBarItem(
-            icon: Icon(Icons.science),
+            icon: Icon(Icons.person_outline),
           ),
         ],
       ),
@@ -94,7 +92,9 @@ class _HomePageState extends State<HomePage> {
     return Container(
       padding: EdgeInsets.only(top: 5, bottom: 10, left: 10, right: 10),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, 'axis');
+        },
         child: Container(
           height: h * 0.3,
           child: Column(
@@ -118,4 +118,4 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-enum _SelectedTab { home, favorite, search, person }
+enum _SelectedTab { laboratory, favorites, community, profile }

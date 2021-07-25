@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:physxlab/src/pages/axis_page.dart';
 
 import 'package:physxlab/src/pages/home_page.dart';
 
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       initialRoute: 'home',
       routes: {
         'home': (context) => HomePage(),
+        'axis': (context) => AxisPage(),
       },
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData(
