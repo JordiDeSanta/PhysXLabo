@@ -98,10 +98,16 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {},
         child: Container(
           height: h * 0.3,
-          child: Icon(
-            icon,
-            size: 60,
-            color: customColors.iconsColor,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                icon,
+                size: 60,
+                color: customColors.iconsColor,
+              ),
+              Text(name),
+            ],
           ),
         ),
       ),

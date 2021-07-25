@@ -24,6 +24,11 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
           backgroundColor: customColors.buttonsColor,
         ),
+        colorScheme: ColorScheme.dark().copyWith(
+          primary: Color.fromARGB(255, 70, 41, 100),
+          secondary: Color.fromARGB(255, 156, 84, 213),
+          background: Color.fromARGB(255, 70, 41, 100),
+        ),
         primaryTextTheme: GoogleFonts.openSansCondensedTextTheme(),
         primaryIconTheme: IconThemeData(color: customColors.iconsColor),
         iconTheme: IconThemeData(color: customColors.iconsColor),
