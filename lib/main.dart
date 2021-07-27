@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:physxlab/src/pages/axis_page.dart';
-import 'package:physxlab/src/pages/experiment.dart';
+import 'package:physxlab/src/pages/experiments/school_biker.dart';
 import 'package:physxlab/src/pages/experiments_page.dart';
 import 'package:physxlab/src/pages/home_page.dart';
 
