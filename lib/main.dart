@@ -12,8 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = ColorScheme.dark().copyWith(
-      background: Color.fromARGB(255, 70, 41, 100),
-      primary: Color.fromARGB(255, 156, 84, 213),
+      background: ThemeData.dark().scaffoldBackgroundColor,
+      primary: Colors.black38,
       secondary: Color.fromARGB(255, 94, 226, 240),
     );
 
@@ -53,6 +53,15 @@ class MyApp extends StatelessWidget {
           ),
         ),
         iconTheme: IconThemeData(color: colorScheme.secondary),
+        sliderTheme: SliderThemeData(
+          activeTickMarkColor: colorScheme.secondary,
+          inactiveTrackColor: colorScheme.primary,
+          activeTrackColor: colorScheme.secondary,
+          thumbColor: colorScheme.secondary,
+          disabledActiveTickMarkColor: colorScheme.secondary,
+          disabledActiveTrackColor: colorScheme.secondary,
+          // inactiveTickMarkColor:
+        ),
       ),
     );
   }
